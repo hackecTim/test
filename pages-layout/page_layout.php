@@ -10,9 +10,9 @@ if (!isset($_GET['placeID'])) {
 $placeID = 1;//intval($_GET['placeID']);
 
 
-$sql = "SELECT Review.*, Users.username
+$sql = "SELECT Review.*, User.username
         FROM Review
-        JOIN Users ON Review.userID = Users.userID
+        JOIN User ON Review.userID = User.userID
         WHERE Review.placeID = ?
         ORDER BY Review.reviewID DESC";
 
@@ -40,9 +40,9 @@ if (!isset($_GET['id'])) {
 $placeID = intval($_GET['id']);
 
 
-$sql = "SELECT Review.*, Users.username
+$sql = "SELECT Review.*, User.username
         FROM Review
-        JOIN Users ON Review.userID = Users.user_id
+        JOIN User ON Review.userID = User.user_id
         WHERE Review.placeID = ?
         ORDER BY Review.reviewID DESC";
 
@@ -567,6 +567,8 @@ crossorigin=""></script>
 <p style="color: #666; font-size: 0.9rem; margin-bottom: 1rem;">Castle Hill Road 1, Old Town</p>
 <div id="map">
 </div>
+<button class="btn-save" style="margin-top:1rem;" onclick="showUserLocation()">Show my location</button>
+<button class="btn-save" style="margin-top:0.5rem;" onclick="routeToLocation()">Show directions</button>
 </div>
 </div>
 
@@ -705,6 +707,8 @@ crossorigin=""></script>
     </div>
 </div>
 <script src="page_layout.js" defer></script>
-
+<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+<script src="page_layout.js"></script>
 </body>
 </html>
