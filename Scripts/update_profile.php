@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "config.php";
+include "Config.php";
 
 if (!isset($_SESSION['userID'])) {
     header("Location: ../Sites/login.php?error=notloggedin");
@@ -37,7 +37,7 @@ if (!filter_var($new_email, FILTER_VALIDATE_EMAIL)) {
     exit();
 }
 
-$sql = "SELECT userID FROM users WHERE (username = ? OR email = ?) AND userID != ?";
+$sql = "SELECT userID FROM Users WHERE (username = ? OR email = ?) AND userID != ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("ssi", $new_username, $new_email, $user_id);
 $stmt->execute();
@@ -63,7 +63,7 @@ if (!empty($new_pass)) {
 
     $hashed = password_hash($new_pass, PASSWORD_BCRYPT);
 
-    $sql = "UPDATE users SET username = ?, email = ?, password = ? WHERE user_id = ?";
+    $sql = "UPDATE Users SET username = ?, email = ?, password = ? WHERE user_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sssi", $new_username, $new_email, $hashed, $user_id);
 
@@ -87,3 +87,4 @@ if ($stmt->execute()) {
     exit();
 }
 ?>
+
