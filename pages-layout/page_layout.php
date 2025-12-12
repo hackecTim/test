@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-include "../Scripts/config.php";
+include "../Scripts/Config.php";
 /*
 if (!isset($_GET['placeID'])) {
     die("Missing place ID");
@@ -12,7 +12,7 @@ $placeID = 1;//intval($_GET['placeID']);
 
 $sql = "SELECT Review.*, Users.username
         FROM Review
-        JOIN users ON Review.userID = Users.userID
+        JOIN Users ON Review.userID = Users.userID
         WHERE Review.placeID = ?
         ORDER BY Review.reviewID DESC";
 
@@ -22,7 +22,7 @@ $stmt->execute();
 $reviews = $stmt->get_result();
 
 
-$sql2 = "SELECT AVG(rating) AS avgRating, COUNT(*) AS totalReviews FROM review WHERE placeID = ?";
+$sql2 = "SELECT AVG(rating) AS avgRating, COUNT(*) AS totalReviews FROM Review WHERE placeID = ?";
 $stmt2 = $conn->prepare($sql2);
 $stmt2->bind_param("i", $placeID);
 $stmt2->execute();
@@ -40,11 +40,11 @@ if (!isset($_GET['id'])) {
 $placeID = intval($_GET['id']);
 
 
-$sql = "SELECT review.*, users.username
-        FROM review
-        JOIN users ON review.userID = users.user_id
-        WHERE review.placeID = ?
-        ORDER BY review.reviewID DESC";
+$sql = "SELECT Review.*, Users.username
+        FROM Review
+        JOIN Users ON Review.userID = Users.user_id
+        WHERE Review.placeID = ?
+        ORDER BY Review.reviewID DESC";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $placeID);
@@ -52,7 +52,7 @@ $stmt->execute();
 $reviews = $stmt->get_result();
 
 
-$sql2 = "SELECT AVG(rating) AS avgRating, COUNT(*) AS totalReviews FROM review WHERE placeID = ?";
+$sql2 = "SELECT AVG(rating) AS avgRating, COUNT(*) AS totalReviews FROM Review WHERE placeID = ?";
 $stmt2 = $conn->prepare($sql2);
 $stmt2->bind_param("i", $placeID);
 $stmt2->execute();
