@@ -63,7 +63,7 @@ session_start();
             </div>
           </a>
 
-          <a href="5-day.html" class="card">
+          <a href="../day-trips/5_day_trip.html" class="card">
             <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600" alt="5 Day Trip" class="card-image">
             <div class="card-content">
               <h3>5-Day Deep Dive</h3>
