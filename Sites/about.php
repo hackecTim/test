@@ -8,14 +8,14 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About - Discoverly</title>
 
-  <link rel="stylesheet" href="../pages-layout/base.css">
-  <link rel="stylesheet" href="../pages-layout/about.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/about.css">
 </head>
 
 <body>
   <div class="site-wrapper">
     <header>
-      <h1>Discoverly</h1>
+      <h1 class="logo">Discoverly</h1>
       <nav>
         <a href="../index.php">Home</a>
         <a href="./about.php">About</a>

@@ -8,8 +8,8 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Log In - Discoverly</title>
 
-  <link rel="stylesheet" href="../pages-layout/base.css">
-  <link rel="stylesheet" href="../pages-layout/login.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/login.css">
 
   <script src="../Scripts/login.js" defer></script>
 </head>
@@ -18,7 +18,7 @@ session_start();
   <div class="site-wrapper">
 
     <header>
-      <h1>Discoverly</h1>
+      <h1 class="logo">Discoverly</h1>
       <nav>
         <a href="../index.php">Home</a>
         <a href="about.php">About</a>

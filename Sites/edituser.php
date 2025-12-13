@@ -29,7 +29,7 @@ $user = $result->fetch_assoc();
 <body>
 
 <header>
-    <h1 >Discoverly</h1>
+    <h1 class="logo" >Discoverly</h1>
 
     <nav class="nav-links">
         <a href="../index.php">Home</a>

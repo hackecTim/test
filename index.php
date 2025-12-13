@@ -1,6 +1,7 @@
 <?php
 session_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +9,8 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Discoverly</title>
 
-  <link rel="stylesheet" href="pages-layout/base.css">
-  <link rel="stylesheet" href="pages-layout/index.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/index.css">
 
   <script src="Scripts/index.js" defer></script>
 
@@ -40,7 +41,7 @@ session_start();
 <body>
   <div class="site-wrapper">
     <header>
-      <h1>Discoverly</h1>
+      <h1 class="logo">Discoverly</h1>
       <nav>
         <a href="index.php">Home</a>
         <a href="Sites/about.php">About</a>

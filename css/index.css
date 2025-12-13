@@ -25,7 +25,11 @@
     cursor: pointer;
     transition: background-color 0.25s ease;
   }
-  
+  .btn-primary {
+  display: block;      
+  margin: 0 auto;      
+  width: fit-content;   
+  }
   .btn-primary:hover {
     background-color: #25497a;
   }

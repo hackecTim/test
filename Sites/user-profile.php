@@ -34,8 +34,8 @@ $result_places = $stmt_places->get_result();
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Profile - Discoverly</title>
 
-  <link rel="stylesheet" href="../pages-layout/base.css">
-  <link rel="stylesheet" href="../pages-layout/user-profile.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/user-profile.css">
 
   <script src="../Scripts/user-profile.js" defer></script>
 </head>
@@ -44,7 +44,7 @@ $result_places = $stmt_places->get_result();
   <div class="site-wrapper">
 
     <header>
-      <h1>Discoverly</h1>
+      <h1 class="logo">Discoverly</h1>
       <nav>
         <a href="../index.php">Home</a>
         <a href="hub.php">Plan Your Trip</a>
