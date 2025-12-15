@@ -22,7 +22,8 @@ $user = $result->fetch_assoc();
 <head>
 <meta charset="UTF-8" />
 <title>Edit Profile - Discoverly</title>
-<link rel="stylesheet" href="../Style/edituser.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/edituser.css">
 
 </head>
 
@@ -100,4 +101,5 @@ $user = $result->fetch_assoc();
 
 </body>
 </html>
+
 
