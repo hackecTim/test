@@ -25,7 +25,7 @@ if (!isset($_SESSION['userID'])) {
     <div class="logo">Discoverly</div>
 
     <nav class="nav-links">
-        <a href="index.php">Home</a>
+        <a href="../index.php">Home</a>
         <a href="page1.php">Plan Your Trip</a>
         <a href="about.php">About</a>
 
@@ -116,4 +116,5 @@ if (!isset($_SESSION['userID'])) {
 
 </body>
 </html>
+
 
