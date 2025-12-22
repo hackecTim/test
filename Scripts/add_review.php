@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "config.php";
+include "Config.php";
 
 if (!isset($_SESSION['userID'])) {
     header("Location: ../Sites/login.php?error=login_required");
