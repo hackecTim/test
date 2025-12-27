@@ -12,25 +12,18 @@ session_start();
   <link rel="stylesheet" href="../css/signup.css">
 
   <script src="../Scripts/signup.js" defer></script>
+    <script src="../Scripts/base.js" defer></script>
+
 </head>
 
 <body>
   <div class="site-wrapper">
 
-    <header>
-      <h1 class="logo">Discoverly</h1>
-      <nav>
-        <a href="../index.php">Home</a>
-        <a href="about.php">About</a>
-
-        <?php if (isset($_SESSION['userID'])): ?>
-          <a href="user-profile.php">My Profile</a>
-          <a href="../Scripts/logout.php" class="logout-btn">Logout</a>
-        <?php else: ?>
-          <a href="login.php">Login</a>
-        <?php endif; ?>
-      </nav>
-    </header>
+    <?php
+      $current = 'Sign Up';
+      $pill = 'Sign Up';
+      include __DIR__ . "/../partials/header_sites.php";
+    ?>
 
     <main class="auth-main">
       <div class="signup-container">
@@ -72,6 +65,7 @@ session_start();
         </div>
       </div>
     </main>
+<?php include __DIR__ . "/../partials/footer.php"; ?>
 
   </div>
 </body>

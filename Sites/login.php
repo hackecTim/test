@@ -12,25 +12,18 @@ session_start();
   <link rel="stylesheet" href="../css/login.css">
 
   <script src="../Scripts/login.js" defer></script>
+  <script src="../Scripts/base.js" defer></script>
 </head>
 
 <body>
   <div class="site-wrapper">
 
-    <header>
-      <h1 class="logo">Discoverly</h1>
-      <nav>
-        <a href="../index.php">Home</a>
-        <a href="about.php">About</a>
-
-        <?php if (isset($_SESSION['userID'])): ?>
-          <a href="user-profile.php">My Profile</a>
-          <a href="../Scripts/logout.php" class="logout-btn">Logout</a>
-        <?php else: ?>
-          <a href="login.php">Login</a>
-        <?php endif; ?>
-      </nav>
-    </header>
+    
+    <?php
+      $current = 'Login';
+      $pill = 'Login';
+      include __DIR__ . "/../partials/header_sites.php";
+    ?>
 
     <main class="auth-main">
       <div class="login-container">
@@ -70,6 +63,7 @@ session_start();
 
       </div>
     </main>
+<?php include __DIR__ . "/../partials/footer.php"; ?>
 
   </div>
 </body>

@@ -82,6 +82,8 @@ $totalReviews = $ratingData['totalReviews'];*/
   <title>Castle Hill - Discoverly</title>
 
   <link rel="stylesheet" href="../css/pages_layout.css" />
+    <link rel="stylesheet" href="../css/base.css" />
+
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
@@ -92,24 +94,16 @@ $totalReviews = $ratingData['totalReviews'];*/
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
   <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
-
+  <script src="../Scripts/base.js" defer></script>
   <script src="./page_layout.js" defer></script>
 </head>
 
 <body>
-<header>
-  <h1>Discoverly</h1>
-  <nav>
-    <a href="../Sites/about.php">About</a>
-
-    <?php if (isset($_SESSION['userID'])): ?>
-      <a href="../Sites/user-profile.php">My Profile</a>
-      <a href="../Scripts/logout.php" class="logout-btn">Logout</a>
-    <?php else: ?>
-      <a href="../Sites/login.php">Login</a>
-    <?php endif; ?>
-  </nav>
-</header>
+    <?php
+      $current = 'Page Layout';
+      $pill = 'Page Layout';
+      include __DIR__ . "/../partials/header_sites.php";
+    ?>
 
 <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?w=1600"
      alt="Castle Hill"
@@ -275,6 +269,7 @@ $totalReviews = $ratingData['totalReviews'];*/
     </form>
   </div>
 </div>
-
 </body>
+<?php include __DIR__ . "/../partials/footer.php"; ?>
+
 </html>

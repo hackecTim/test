@@ -10,25 +10,16 @@ session_start();
 
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/about.css">
+    <script src="../Scripts/base.js" defer></script>
 </head>
 
 <body>
   <div class="site-wrapper">
-    <header>
-      <h1 class="logo">Discoverly</h1>
-      <nav>
-        <a href="../index.php">Home</a>
-        <a href="./about.php">About</a>
-
-        <?php if (isset($_SESSION['userID'])): ?>
-          <a href="./user-profile.php">My Profile</a>
-          <a href="../Scripts/logout.php" class="logout-btn">Logout</a>
-        <?php else: ?>
-          <a href="./login.php">Login</a>
-        <?php endif; ?>
-      </nav>
-    </header>
-
+    <?php
+      $current = 'About';
+      $pill = 'About';
+      include __DIR__ . "/../partials/header_sites.php";
+    ?>
     <main>
       <section class="hero-section">
         <h2>About Discoverly</h2>
@@ -92,6 +83,8 @@ session_start();
         <!-- if they are not logged in, its gonna say log in instead of plan your trip :)-->
       </section>
     </main>
+    <?php include __DIR__ . "/../partials/footer.php"; ?>
+
   </div>
 </body>
 </html>

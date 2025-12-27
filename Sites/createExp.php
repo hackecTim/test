@@ -16,28 +16,16 @@ if (!isset($_SESSION['userID'])) {
 <link rel="stylesheet" href="../css/base.css">
 <link rel="stylesheet" href="../css/createExp.css">
 <script src="../Scripts/createExp.js"></script> 
+  <script src="../Scripts/base.js" defer></script>
 
 </head>
 
 <body>
-
-<header class="navbar">
-    <div class="logo">Discoverly</div>
-
-    <nav class="nav-links">
-        <a href="../index.php">Home</a>
-        <a href="page1.php">Plan Your Trip</a>
-        <a href="about.php">About</a>
-
-        <?php if (isset($_SESSION['userID'])): ?>
-            <a href="user-profile.php">My Profile</a>
-            <a class="logout" href="Scripts/logout.php">Logout</a>
-        <?php else: ?>
-            <a href="login.php">Login</a>
-        <?php endif; ?>
-    </nav>
-</header>
-
+    <?php
+      $current = 'Create Experience';
+      $pill = 'Create Experience';
+      include __DIR__ . "/../partials/header_sites.php";
+    ?>
 <main class="container">
 
     <h2>Create New Place</h2>
@@ -113,6 +101,7 @@ if (!isset($_SESSION['userID'])) {
     </form>
 
 </main>
+<?php include __DIR__ . "/../partials/footer.php"; ?>
 
 </body>
 </html>

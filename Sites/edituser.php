@@ -24,28 +24,15 @@ $user = $result->fetch_assoc();
 <title>Edit Profile - Discoverly</title>
 <link rel="stylesheet" href="../css/base.css">
 <link rel="stylesheet" href="../css/edituser.css">
-
+  <script src="../Scripts/base.js" defer></script>
 </head>
 
 <body>
-
-<header>
-    <h1 class="logo" >Discoverly</h1>
-
-    <nav class="nav-links">
-        <a href="../index.php">Home</a>
-        <a href="hub.php">Plan Your Trip</a>
-
-        <?php if (isset($_SESSION['userID'])): ?>
-            <a href="user-profile.php">My Profile</a>
-            <a class="logout" href="../Scripts/logout.php">Log Out</a>
-        <?php else: ?>
-            <a href="login.php">Log In</a>
-            <a href="signup.php">Sign Up</a>
-        <?php endif; ?>
-    </nav>
-</header>
-
+    <?php
+      $current = 'Edit Profile';
+      $pill = 'Edit Profile';
+      include __DIR__ . "/../partials/header_sites.php";
+    ?>
 <main class="container">
 
     <h2>Edit Profile</h2>
@@ -98,6 +85,7 @@ $user = $result->fetch_assoc();
     </form>
 
 </main>
+<?php include __DIR__ . "/../partials/footer.php"; ?>
 
 </body>
 </html>

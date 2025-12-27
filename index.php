@@ -13,6 +13,7 @@ session_start();
   <link rel="stylesheet" href="css/index.css">
 
   <script src="Scripts/index.js" defer></script>
+  <script src="Scripts/base.js" defer></script>
 
   <script>
     function confirmLogout() {
@@ -40,21 +41,11 @@ session_start();
 
 <body>
   <div class="site-wrapper">
-    <header>
-      <h1 class="logo">Discoverly</h1>
-      <nav>
-        <a href="index.php">Home</a>
-        <a href="Sites/about.php">About</a>
-
-        <?php if (isset($_SESSION['userID'])): ?>
-          <a href="Sites/user-profile.php">My Profile</a>
-          <a href="Scripts/logout.php" class="logout-btn">Logout</a>
-        <?php else: ?>
-          <a href="Sites/login.php">Login</a>
-        <?php endif; ?>
-      </nav>
-    </header>
-
+    <?php
+      $current = "home";
+      $pill = "Home";
+      include __DIR__ . "/partials/header_root.php";
+    ?>
     <?php if (isset($_SESSION['userID'])): ?>
       <div class="create-experience-container">
         <a href="Sites/createExp.php" class="create-experience-btn">
@@ -75,7 +66,7 @@ session_start();
         Explore the best of your town with our guide to lesser-known attractions, cozy spots, and local favorites.
       </p>
 
-      <button class="btn-primary">Get Started</button>
+      <button class="btn-primary" id="getStartedBtn" type="button">Get Started</button>
 
       <div class="card-container">
         <div class="card">
@@ -103,6 +94,8 @@ session_start();
         </div>
       </div>
     </main>
+    <?php include __DIR__ . "/partials/footer.php"; ?>
+
   </div>
 </body>
 </html>

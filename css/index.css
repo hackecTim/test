@@ -97,3 +97,35 @@
     }
   }
   
+  /* ===== NAVBAR LOCK (Home only) ===== */
+/* Stops index.css from overriding the dropdown */
+
+.site-header .nav-container { position: relative !important; }
+
+@media (max-width: 780px) {
+  .site-header .site-nav {
+    display: none !important;
+    position: absolute !important;
+    right: 12px !important;
+    top: 54px !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 6px !important;
+
+    background: rgba(249, 246, 241, 0.98) !important;
+    border: 1px solid rgba(30,58,95,.14) !important;
+    border-radius: 14px !important;
+    padding: 10px !important;
+    min-width: 210px !important;
+    box-shadow: 0 12px 26px rgba(0,0,0,.10) !important;
+    z-index: 9999 !important;
+  }
+
+  .site-header .site-nav.is-open {
+    display: flex !important;
+  }
+
+  .site-header .nav-toggle {
+    display: inline-flex !important;
+  }
+}

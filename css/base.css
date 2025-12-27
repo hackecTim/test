@@ -212,4 +212,176 @@
     background: #264d7a;
     transform: translateY(-3px);
   }
-  
+
+/*
+   Compact Navbar
+   Applies ONLY to header.site-header */
+
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  /* beige-tinted header */
+  background: rgba(249, 246, 241, 0.92);
+  border-bottom: 1px solid rgba(30,58,95,.10);
+}
+
+.site-header .nav-container{
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: .65rem 1.25rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+/* brand */
+.site-header .brand{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.site-header .brand-mark{
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--accent-color);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.site-header .brand-pill{
+  font-size: .75rem;
+  font-weight: 800;
+  color: #fff;
+  background: var(--accent-color);
+  padding: .28rem .55rem;
+  border-radius: 999px;
+  line-height: 1;
+}
+
+/* nav links */
+.site-header .site-nav{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.site-header .site-nav a{
+  text-decoration: none;
+  color: rgba(45,45,45,.92);
+  font-weight: 650;
+  font-size: .98rem;
+
+  padding: .45rem .7rem;
+  border-radius: 999px;
+
+  /* subtle transitions only */
+  transition: background .12s ease, color .12s ease;
+}
+
+.site-header .site-nav a:hover{
+  background: rgba(30,58,95,.08);
+  color: var(--accent-color);
+}
+
+.site-header .site-nav a.is-active{
+  background: rgba(30,58,95,.12);
+  color: var(--accent-color);
+}
+
+/* CTA button (Login/Logout) */
+.site-header .site-nav a.nav-cta{
+  background: var(--accent-color);
+  color: #fff;
+  padding: .45rem .85rem;
+}
+
+.site-header .site-nav a.nav-cta:hover{
+  background: #25497a;
+  color: #fff;
+}
+
+/* Mobile toggle */
+.site-header .nav-toggle{
+  display: none;
+  border: 1px solid rgba(30,58,95,.16);
+  background: #fff;
+  color: var(--accent-color);
+  border-radius: 10px;
+  padding: .35rem .55rem;
+  font-size: 16px;
+  cursor: pointer;
+
+  transition: background .12s ease, border-color .12s ease;
+}
+
+.site-header .nav-toggle:hover{
+  background: rgba(30,58,95,.06);
+  border-color: rgba(30,58,95,.24);
+}
+
+/* Mobile dropdown */
+@media (max-width: 780px){
+  .site-header .nav-toggle{ display:block; }
+
+  .site-header .site-nav{
+    display:none;
+    position:absolute;
+    right: 12px;
+    top: 54px;
+
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+
+    background: rgba(249, 246, 241, 0.98);
+    border: 1px solid rgba(30,58,95,.14);
+    border-radius: 14px;
+    padding: 10px;
+    min-width: 210px;
+
+    box-shadow: 0 12px 26px rgba(0,0,0,.10);
+  }
+
+  .site-header .site-nav.is-open{ display:flex; }
+
+  .site-header .site-nav a{
+    border-radius: 12px;
+    padding: .55rem .75rem;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .site-header .site-nav a,
+  .site-header .nav-toggle{
+    transition: none !important;
+  }
+}
+
+/* Safety: mobile dropdown should never cover the whole page */
+.site-header { position: sticky; top: 0; z-index: 50; }
+.site-header .nav-container { position: relative; }
+
+
+/* ===== Footer ===== */
+.site-footer {
+  margin-top: auto;
+  padding: 1.25rem 1rem;
+  background: #fff;
+  border-top: 1px solid rgba(30, 58, 95, 0.08);
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+}

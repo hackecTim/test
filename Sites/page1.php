@@ -10,25 +10,19 @@ session_start();
 
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/page1.css">
+  <script src="../Scripts/base.js" defer></script>
+
 </head>
 
 <body>
   <div class="site-wrapper">
 
-    <header>
-      <h1 class="logo">Discoverly</h1>
-      <nav>
-        <a href="../index.php">Home</a>
-        <a href="about.php">About</a>
-
-        <?php if (isset($_SESSION['userID'])): ?>
-          <a href="user-profile.php">My Profile</a>
-          <a href="../Scripts/logout.php" class="logout-btn">Logout</a>
-        <?php else: ?>
-          <a href="login.php">Login</a>
-        <?php endif; ?>
-      </nav>
-    </header>
+   
+    <?php
+      $current = 'Page1';
+      $pill = 'Page1';
+      include __DIR__ . "/../partials/header_sites.php";
+    ?>
 
     <?php if (isset($_SESSION['userID'])): ?>
       <div class="create-experience-container">
@@ -171,6 +165,7 @@ session_start();
         </div>
       </section>
     </main>
+<?php include __DIR__ . "/../partials/footer.php"; ?>
 
   </div>
 
