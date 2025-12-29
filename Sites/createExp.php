@@ -68,7 +68,7 @@ if (!isset($_SESSION['userID'])) {
 
         <div class="form-group">
             <label>Price (estimated €)</label>
-            <input type="number" name="price" placeholder="Example: 15">
+            <input type="text" name="price" placeholder="Example: €€">
         </div>
 
         <div class="form-group">
@@ -105,5 +105,6 @@ if (!isset($_SESSION['userID'])) {
 
 </body>
 </html>
+
 
 
