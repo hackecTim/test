@@ -4,26 +4,26 @@ USE discoverly;
 
 CREATE TABLE Users (
     userID INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    email VARCHAR(100) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL
+    username VARCHAR(100) NOT NULL UNIQUE,
+    email VARCHAR(200) NOT NULL UNIQUE,
+    password VARCHAR(300) NOT NULL
 );
 
 CREATE TABLE Place (
     placeID INT AUTO_INCREMENT PRIMARY KEY,
     userID INT NOT NULL,
-    type VARCHAR(50),
-    name VARCHAR(100),
-    location INT,
-    about VARCHAR(900),
-    address VARCHAR(200),
-    hours VARCHAR(100),
-    price INT,
-    contact VARCHAR(50),
+    type VARCHAR(100),
+    name VARCHAR(200),
+    location VARCHAR(300),
+    about VARCHAR(1500),
+    address VARCHAR(300),
+    hours VARCHAR(300),
+    price VARCHAR(100),
+    contact VARCHAR(300),
     website VARCHAR(500),
-    accessibility VARCHAR(100),
+    accessibility VARCHAR(300),
     duration INT,
-    photos VARCHAR(1000),
+    photos VARCHAR(2000),
 
     CONSTRAINT fk_place_user
         FOREIGN KEY (userID) REFERENCES Users(userID)
@@ -34,7 +34,7 @@ CREATE TABLE Review (
     reviewID INT AUTO_INCREMENT PRIMARY KEY,
     userID INT NOT NULL,
     placeID INT NOT NULL,
-    comment VARCHAR(200),
+    comment VARCHAR(500),
     rating INT,
 
     CONSTRAINT fk_review_user
