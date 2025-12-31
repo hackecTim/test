@@ -23,6 +23,49 @@ $stmt_places = $conn->prepare($sql_places);
 $stmt_places->bind_param("i", $user_id);
 $stmt_places->execute();
 $result_places = $stmt_places->get_result();
+
+//Favoriti
+
+$sql_places2 = "
+  SELECT Place.*
+  FROM wishlist
+  JOIN Place ON wishlist.placeID = Place.placeID
+  WHERE wishlist.userID = ?
+";
+
+$stmt_places2 = $conn->prepare($sql_places2);
+$stmt_places2->bind_param("i", $user_id);
+$stmt_places2->execute();
+$result_places2 = $stmt_places2->get_result();
+
+//User stats
+$stmt = $conn->prepare("
+    SELECT COUNT(*) AS total 
+    FROM wishlist 
+    WHERE userID = ?
+");
+$stmt->bind_param("i", $userID);
+$stmt->execute();
+$savedPlaces = $stmt->get_result()->fetch_assoc()['total'];
+
+
+$stmt = $conn->prepare("
+    SELECT COUNT(*) AS total 
+    FROM Review 
+    WHERE userID = ?
+");
+$stmt->bind_param("i", $userID);
+$stmt->execute();
+$reviewsCount = $stmt->get_result()->fetch_assoc()['total'];
+
+
+$stmt = $conn->prepare("
+    SELECT COUNT(*) AS total 
+    FROM  wishlist
+    WHERE userID = ?");
+$stmt->bind_param("i", $userID);
+$stmt->execute();
+$visitedCount = $stmt->get_result()->fetch_assoc()['total'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,19 +100,23 @@ $result_places = $stmt_places->get_result();
             <p><?php echo htmlspecialchars($user['email']); ?></p>
 
             <div class="profile-stats">
-              <div class="stat">
-                <span class="stat-number">5</span>
-                <span class="stat-label">Saved Places</span>
-              </div>
-              <div class="stat">
-                <span class="stat-number">3</span>
-                <span class="stat-label">Reviews</span>
-              </div>
-              <div class="stat">
-                <span class="stat-number">2</span>
-                <span class="stat-label">Visited</span>
-              </div>
-            </div>
+
+			<div class="stat">
+				<span class="stat-number"><?= $savedPlaces ?></span>
+				<span class="stat-label">Saved Places</span>
+			</div>
+
+			<div class="stat">
+				<span class="stat-number"><?= $reviewsCount ?></span>
+				<span class="stat-label">Reviews</span>
+			</div>
+
+			<div class="stat">
+				<span class="stat-number"><?= $visitedCount ?></span>
+				<span class="stat-label">Visited</span>
+			</div>
+
+</div>
 
             <div class="profile-actions">
               <a class="btn-edit" href="edituser.php">Edit Profile</a>
@@ -79,65 +126,136 @@ $result_places = $stmt_places->get_result();
       </section>
 
       <section class="section">
-        <div class="section-header">
-          <div>
-            <h3 class="section-title">My Added Places</h3>
-            <p class="section-subtitle">Your saved spots for future trips.</p>
+  <div class="section-header">
+    <div>
+      <h3 class="section-title">My Added Places</h3>
+      <p class="section-subtitle">Places you personally added.</p>
+    </div>
+  </div>
+
+  <div class="saved-grid">
+
+    <?php if ($result_places->num_rows === 0): ?>
+      <div class="empty-state">
+        <h4>No added places</h4>
+        <p>You haven’t added any places yet.</p>
+        <a href="../Sites/create_place.php" class="btn-primary">
+          Add your first place
+        </a>
+      </div>
+    <?php endif; ?>
+
+    <?php while ($place = $result_places->fetch_assoc()): ?>
+      <article class="saved-card">
+
+        <a href="../pages-layout/page_layout.php?id=<?= (int)$place['placeID'] ?>"
+           class="saved-link">
+
+          <div class="saved-media">
+            <?php
+              $photosRaw = $place['photos'] ?? '';
+              $firstPhoto = '';
+              if (!empty($photosRaw)) {
+                $parts = array_map('trim', explode(',', $photosRaw));
+                $firstPhoto = $parts[0] ?? '';
+              }
+              if (empty($firstPhoto)) {
+                $firstPhoto = '../uploads_places/placeholder.jpg';
+              }
+            ?>
+
+            <img
+              class="saved-image"
+              src="<?= htmlspecialchars($firstPhoto) ?>"
+              alt="<?= htmlspecialchars($place['name']) ?>"
+              loading="lazy"
+            >
+
+            <span class="tag"><?= ucfirst($place['type']) ?></span>
           </div>
-        </div>
 
-        <div class="saved-grid">
-          <?php if ($result_places->num_rows === 0): ?>
-            <div class="empty-state">
-              <h4>No places yet</h4>
-              <p>Start exploring and add places to your list.</p>
-              <a href="../index.php" class="btn-primary">Explore Places</a>
+          <div class="saved-content">
+            <h3><?= htmlspecialchars($place['name']) ?></h3>
+            <p><?= htmlspecialchars(substr($place['about'], 0, 110)) ?>...</p>
+
+            <div class="card-actions">
+              <span class="meta">Added by you</span>
             </div>
-          <?php endif; ?>
+          </div>
 
-          <?php while ($place = $result_places->fetch_assoc()): ?>
-            <article class="saved-card">
-              <div class="saved-media">
-              <?php
-                $photosRaw = $place['photos'] ?? '';
-                $firstPhoto = '';
-                if (!empty($photosRaw)) {
-                  $parts = array_map('trim', explode(',', $photosRaw));
-                  $firstPhoto = $parts[0] ?? '';
-                }
-                if (empty($firstPhoto)) {
-                  $firstPhoto = '../uploads_places/placeholder.jpg';
-                }
-                ?>
+        </a>
 
-                <img
-                  class="saved-image"
-                  src="<?php echo htmlspecialchars($firstPhoto); ?>"
-                  alt=""
-                  loading="lazy"
-                >
-
-                <span class="tag"><?php echo ucfirst($place['type']); ?></span>
-              </div>
-
-              <div class="saved-content">
-                <h3><?php echo htmlspecialchars($place['name']); ?></h3>
-                <p><?php echo htmlspecialchars(substr($place['about'], 0, 110)); ?>...</p>
-
-                <div class="card-actions">
-                  <!-- Optional: make card open details page if you have one -->
-                  <!-- <a class="btn-link" href="place_layout.php?id=<?php echo (int)$place['placeID']; ?>">View details →</a> -->
-                  <span class="meta">Saved</span>
-                </div>
-              </div>
-            </article>
-          <?php endwhile; ?>
-        </div>
-      </section>
-    </main>
-
-    <?php include __DIR__ . "/../partials/footer.php"; ?>
+      </article>
+    <?php endwhile; ?>
 
   </div>
+</section>
+	  <section class="section">
+  <div class="section-header">
+    <div>
+      <h3 class="section-title">My Saved Places</h3>
+      <p class="section-subtitle">Places you added to your favorites.</p>
+    </div>
+  </div>
+
+  <div class="saved-grid">
+
+    <?php if ($result_places2->num_rows === 0): ?>
+      <div class="empty-state">
+        <h4>No saved places</h4>
+        <p>You haven’t added any places to your favorites yet.</p>
+        <a href="../index.php" class="btn-primary">Explore places</a>
+      </div>
+    <?php endif; ?>
+
+    <?php while ($place = $result_places2->fetch_assoc()): ?>
+      <article class="saved-card">
+
+        <a href="../pages-layout/page_layout.php?id=<?= (int)$place['placeID'] ?>" class="saved-link">
+
+          <div class="saved-media">
+            <?php
+              $photosRaw = $place['photos'] ?? '';
+              $firstPhoto = '';
+              if (!empty($photosRaw)) {
+                $parts = array_map('trim', explode(',', $photosRaw));
+                $firstPhoto = $parts[0] ?? '';
+              }
+              if (empty($firstPhoto)) {
+                $firstPhoto = '../uploads_places/placeholder.jpg';
+              }
+            ?>
+
+            <img
+              class="saved-image"
+              src="<?= htmlspecialchars($firstPhoto) ?>"
+              alt="<?= htmlspecialchars($place['name']) ?>"
+              loading="lazy"
+            >
+
+            <span class="tag"><?= ucfirst($place['type']) ?></span>
+          </div>
+
+          <div class="saved-content">
+            <h3><?= htmlspecialchars($place['name']) ?></h3>
+            <p><?= htmlspecialchars(substr($place['about'], 0, 110)) ?>...</p>
+
+            <div class="card-actions">
+              <span class="meta">Favorite</span>
+            </div>
+          </div>
+
+        </a>
+
+      </article>
+    <?php endwhile; ?>
+
+  </div>
+</section>
+
+   </main>
 </body>
+
+
+
 </html>

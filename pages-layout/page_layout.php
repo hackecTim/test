@@ -2,7 +2,7 @@
 session_start();
 
 // Connect to database
-$conn = new mysqli("localhost", "root", "Root123!@#", "discoverly");
+$conn = new mysqli("localhost", "root", "", "discoverly");
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -86,11 +86,25 @@ $totalReviews = (int)$ratingData['totalReviews'];
 <main>
   <div class="detail-header">
     <div class="title-section">
-      <h2><?= htmlspecialchars($place['name']) ?></h2>
-      <span class="category-tag"><?= htmlspecialchars($place['type']) ?></span>
+        <h2><?= htmlspecialchars($place['name']) ?></h2>
+        <span class="category-tag"><?= htmlspecialchars($place['type']) ?></span>
     </div>
-    <button class="btn-save" onclick="showLoginModal()">Add to My List</button>
-  </div>
+
+    <?php if (isset($_SESSION['userID'])): ?>
+
+        <form action="../Scripts/addToWishlist.php" method="POST">
+            <input type="hidden" name="placeID" value="<?= $placeID ?>">
+            <button class="btn-save" type="submit">
+                Add to My List
+            </button>
+        </form>
+    <?php else: ?>
+
+        <button class="btn-save" onclick="showLoginModal()">
+            Add to My List
+        </button>
+    <?php endif; ?>
+</div>
 
   <div class="content-grid">
     <div class="map-section">

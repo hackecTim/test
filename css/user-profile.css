@@ -19,6 +19,21 @@ body{
   margin: 0 auto;
   padding: 2rem 1.25rem 3rem;
 }
+.saved-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.saved-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.saved-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
 
 /* ================= PROFILE HEADER ================= */
 
