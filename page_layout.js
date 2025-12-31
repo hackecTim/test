@@ -165,7 +165,7 @@ function routeToLocation() {
   routeControl = L.Routing.control({
     waypoints: [
       L.latLng(userLat, userLon), // start - user location
-      L.latLng(51.5, -0.09), // end - destination location
+      L.latLng(placeData.lat, placeData.lng), // end - destination location
     ],
     routeWhileDragging: false,
     createMarker: function () {
