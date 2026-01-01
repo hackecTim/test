@@ -39,6 +39,19 @@ session_start();
       </div>
 
       <div class="categories" id="myBtnContainer">
+        <input type="hidden" id="sortSelectHidden" value="az">
+
+        <div class="sort-wrapper">
+          <button class="sort-btn" onclick="toggleSortMenu()">
+          <img src="https://cdn-icons-png.flaticon.com/128/1159/1159884.png" alt="Sort" class="sort-icon">
+          </button>
+
+          <div class="sort-menu" id="sortMenu">
+            <button onclick="setSort('az')">Name (A-Z)</button>
+            <button onclick="setSort('za')">Name (Z-A)</button>
+          </div>
+        </div>
+        
         <button class="category-btn active" onclick="filterSelection('all')">Show all</button>
         <button class="category-btn" onclick="filterSelection('restaurants')">Restaurants</button>
         <button class="category-btn" onclick="filterSelection('cafes')">Cafes</button>

@@ -1,4 +1,47 @@
-//javascript code that filters and searches elements from the places.html and activities.html pages
+//javascript code that filters, sorts and searches elements from the places.html and activities.html pages
+
+//Sort functions:
+function sortPlaces(){
+
+  let grid = document.getElementsByClassName("places-grid")[0];
+  let cards = grid.getElementsByClassName("place-card");
+  let sortType = document.getElementById("sortSelectHidden").value;
+
+  // bubble sort
+  for(let i = 0; i < cards.length - 1; i++){
+    for(let j = i + 1; j < cards.length; j++){
+
+      var nameA = cards[i].getElementsByTagName("h3")[0].innerHTML.toUpperCase();
+      var nameB = cards[j].getElementsByTagName("h3")[0].innerHTML.toUpperCase();
+
+      if((sortType == "az" && nameA > nameB) || (sortType == "za" && nameA < nameB)){
+        let temp = cards[i];
+        grid.insertBefore(cards[j], cards[i]);
+        grid.insertBefore(temp, cards[j].nextSibling);
+      }
+    }
+  }
+}
+
+// toggle sort dropdown menu
+function toggleSortMenu(){
+  let menu = document.getElementById("sortMenu");
+  if(menu.className.indexOf("show") > -1){
+    w3RemoveClass(menu, "show");
+  }
+  else{
+    w3AddClass(menu, "show");
+  }
+}
+
+// set sort type
+function setSort(type){
+  var sortSelect = document.getElementById("sortSelectHidden");
+  sortSelect.value = type;
+  sortPlaces();
+  w3RemoveClass(document.getElementById("sortMenu"), "show");
+}
+
 
 //Filter functions:
 
@@ -15,6 +58,7 @@ function filterSelection(c) {
       w3AddClass(x[i], "show");
     }
   }
+  sortPlaces();
 }
 
 // Show filtered elements
