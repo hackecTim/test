@@ -14,13 +14,13 @@ echo "✅ User created! ID: 1<br>";
 
 // 2. Castle Hill - ID 1
 $conn->query("
-INSERT INTO Place (placeID, userID, type, name, location, about, address, hours, price, contact, website, accessibility, duration, photos) 
+INSERT INTO Place (userID, type, name, location, about, address, hours, price, contact, website, accessibility, duration, photos) 
 VALUES 
-(1, 1, 'Historic Sight', 'Castle Hill', 1, 
+(1, 'Historic Sight', 'Castle Hill', 'some location', 
 'picka ti mater', 
 'Castle Hill Road 1, Old Town', 
 'Daily 9:00 AM - 6:00 PM', 
-12, 
+'€€', 
 '+386 1 234 5678', 
 'www.castlehill.com', 
 'Partial wheelchair access', 
@@ -31,13 +31,13 @@ echo "✅ Castle Hill created! ID: 1<br>";
 
 // 3. The Old Town Tavern - ID 2
 $conn->query("
-INSERT INTO Place (placeID, userID, type, name, location, about, address, hours, price, contact, website, accessibility, duration, photos) 
+INSERT INTO Place (userID, type, name, location, about, address, hours, price, contact, website, accessibility, duration, photos) 
 VALUES 
-(2, 1, 'Restaurant', 'The Old Town Tavern', 2, 
+(1, 'Restaurant', 'The Old Town Tavern', 'some location', 
 'Family-run restaurant serving traditional dishes for three generations.', 
 'Old Town Square 5', 
 'Daily 11:00 AM - 11:00 PM', 
-25, 
+'€€€', 
 '+386 1 999 1111', 
 'www.oldtowntavern.com', 
 'Full wheelchair access', 
@@ -48,13 +48,13 @@ echo "✅ Old Town Tavern created! ID: 2<br>";
 
 // 4. The Alchemist's Café - ID 3
 $conn->query("
-INSERT INTO Place (placeID, userID, type, name, location, about, address, hours, price, contact, website, accessibility, duration, photos) 
+INSERT INTO Place (userID, type, name, location, about, address, hours, price, contact, website, accessibility, duration, photos) 
 VALUES 
-(3, 1, 'Café', 'The Alchemist\'s Café', 3, 
+(1, 'Café', 'The Alchemist\'s Café', 'some location', 
 'Cozy cellar café famous for homemade pastries and artisan hot chocolate.', 
 'Cellar Street 12', 
 'Monday-Saturday 8:00 AM - 8:00 PM', 
-10, 
+'€', 
 '+386 1 222 3333', 
 'www.alchemistcafe.com', 
 'Limited access (stairs to cellar)', 
@@ -65,13 +65,13 @@ echo "✅ Alchemist's Café created! ID: 3<br>";
 
 // 5. National Gallery - ID 4
 $conn->query("
-INSERT INTO Place (placeID, userID, type, name, location, about, address, hours, price, contact, website, accessibility, duration, photos) 
+INSERT INTO Place (userID, type, name, location, about, address, hours, price, contact, website, accessibility, duration, photos) 
 VALUES 
-(4, 1, 'Museum', 'National Gallery', 4, 
+(1, 'Museum', 'National Gallery', 'some location', 
 'Extensive collection of local and international art from medieval to modern.', 
 'Museum Square 1', 
 'Tuesday-Sunday 10:00 AM - 6:00 PM', 
-15, 
+'€€', 
 '+386 1 444 5555', 
 'www.nationalgallery.com', 
 'Full wheelchair access', 
@@ -82,13 +82,13 @@ echo "✅ National Gallery created! ID: 4<br>";
 
 // 6. Monastery Gardens - ID 5
 $conn->query("
-INSERT INTO Place (placeID, userID, type, name, location, about, address, hours, price, contact, website, accessibility, duration, photos) 
+INSERT INTO Place (userID, type, name, location, about, address, hours, price, contact, website, accessibility, duration, photos) 
 VALUES 
-(5, 1, 'Park', 'Monastery Gardens', 5, 
+(1, 'Park', 'Monastery Gardens', 'some location', 
 'Hidden botanical gardens with rare herbs and peaceful meditation labyrinth.', 
 'Monastery Road 8', 
 'Daily 7:00 AM - 7:00 PM', 
-0, 
+'€', 
 '+386 1 666 7777', 
 'www.monasterygardens.com', 
 'Partial access (gravel paths)', 
