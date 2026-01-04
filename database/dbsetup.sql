@@ -36,6 +36,7 @@ CREATE TABLE Review (
     placeID INT NOT NULL,
     comment VARCHAR(500),
     rating INT,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT fk_review_user
         FOREIGN KEY (userID) REFERENCES Users(userID)
