@@ -7,10 +7,10 @@ if ($conn->connect_error) {
 
 echo "Starting fresh insert...<br><br>";
 
-// 1. Insert a test user
+/* 1. Insert a test user
 $conn->query("INSERT INTO Users (userID, username, email, password) 
 VALUES (1, 'john_doe', 'john@test.com', 'password123')");
-echo "✅ User created! ID: 1<br>";
+echo "✅ User created! ID: 1<br>";*/
 
 // 2. Castle Hill - ID 1
 $conn->query("
