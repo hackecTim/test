@@ -148,7 +148,7 @@ $visitedCount = $stmt->get_result()->fetch_assoc()['total'];
     <?php while ($place = $result_places->fetch_assoc()): ?>
       <article class="saved-card">
 
-        <a href="../pages-layout/page_layout.php?id=<?= (int)$place['placeID'] ?>"
+        <a href="../pages-layout/page_layout.php?placeID=<?= (int)$place['placeID'] ?>"
            class="saved-link">
 
           <div class="saved-media">
