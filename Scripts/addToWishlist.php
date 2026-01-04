@@ -21,7 +21,7 @@ $checkStmt->execute();
 $checkStmt->store_result();
 
 if ($checkStmt->num_rows > 0) {
-    header("Location: ../pages-layout/page_layout.php?id=$placeID&wishlist=exists");
+    header("Location: ../pages-layout/page_layout.php?placeID=$placeID&wishlist=exists");
     exit;
 }
 
@@ -33,5 +33,5 @@ if (!$insertStmt->execute()) {
     die("Database error: " . $insertStmt->error);
 }
 
-header("Location: ../pages-layout/page_layout.php?id=$placeID&wishlist=added");
+header("Location: ../pages-layout/page_layout.php?placeID=$placeID&wishlist=added");
 exit;
