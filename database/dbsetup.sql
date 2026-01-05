@@ -24,6 +24,8 @@ CREATE TABLE Place (
     accessibility VARCHAR(300),
     duration INT,
     photos VARCHAR(2000),
+    latitude DECIMAL(9,6),
+    longitude DECIMAL(9,6),
 
     CONSTRAINT fk_place_user
         FOREIGN KEY (userID) REFERENCES Users(userID)
