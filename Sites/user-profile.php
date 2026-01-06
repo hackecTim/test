@@ -39,14 +39,16 @@ $stmt_places2->execute();
 $result_places2 = $stmt_places2->get_result();
 
 //User stats
+
 $stmt = $conn->prepare("
     SELECT COUNT(*) AS total 
     FROM Wishlist 
     WHERE userID = ?
 ");
-$stmt->bind_param("i", $userID);
+$stmt->bind_param("i", $user_id);
 $stmt->execute();
-$savedPlaces = $stmt->get_result()->fetch_assoc()['total'];
+$savedPlaces = (int)$stmt->get_result()->fetch_assoc()['total'];
+
 
 
 $stmt = $conn->prepare("
@@ -54,18 +56,14 @@ $stmt = $conn->prepare("
     FROM Review 
     WHERE userID = ?
 ");
-$stmt->bind_param("i", $userID);
+$stmt->bind_param("i", $user_id);
 $stmt->execute();
-$reviewsCount = $stmt->get_result()->fetch_assoc()['total'];
+$reviewsCount = (int)$stmt->get_result()->fetch_assoc()['total'];
 
 
-$stmt = $conn->prepare("
-    SELECT COUNT(*) AS total 
-    FROM  Wishlist
-    WHERE userID = ?");
-$stmt->bind_param("i", $userID);
-$stmt->execute();
-$visitedCount = $stmt->get_result()->fetch_assoc()['total'];
+
+$visitedCount = 0;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

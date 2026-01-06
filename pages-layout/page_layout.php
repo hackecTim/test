@@ -47,6 +47,19 @@ $avgRating = $ratingData['avgRating']
     : "0.0";
 
 $totalReviews = (int)$ratingData['totalReviews'];
+
+//Ali je ta place v wishlistu
+$isInWishlist = false;
+
+if (isset($_SESSION['userID'])) {
+    $checkSql = "SELECT 1 FROM wishlist WHERE userID = ? AND placeID = ? LIMIT 1";
+    $checkStmt = $conn->prepare($checkSql);
+    $checkStmt->bind_param("ii", $_SESSION['userID'], $placeID);
+    $checkStmt->execute();
+    $checkStmt->store_result();
+
+    $isInWishlist = $checkStmt->num_rows > 0;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -102,18 +115,28 @@ $totalReviews = (int)$ratingData['totalReviews'];
 
     <?php if (isset($_SESSION['userID'])): ?>
 
+    <?php if ($isInWishlist): ?>
+        <form action="../Scripts/removeFromWishlist.php" method="POST">
+            <input type="hidden" name="placeID" value="<?= $placeID ?>">
+            <button class="btn-save danger" type="submit">
+                Remove from My List
+            </button>
+        </form>
+    <?php else: ?>
         <form action="../Scripts/addToWishlist.php" method="POST">
             <input type="hidden" name="placeID" value="<?= $placeID ?>">
             <button class="btn-save" type="submit">
                 Add to My List
             </button>
         </form>
-    <?php else: ?>
-
-        <button class="btn-save" onclick="showLoginModal()">
-            Add to My List
-        </button>
     <?php endif; ?>
+
+<?php else: ?>
+    <button class="btn-save" onclick="showLoginModal()">
+        Add to My List
+    </button>
+<?php endif; ?>
+
 </div>
 
   <div class="content-grid">
