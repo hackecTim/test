@@ -52,7 +52,7 @@ $totalReviews = (int)$ratingData['totalReviews'];
 $isInWishlist = false;
 
 if (isset($_SESSION['userID'])) {
-    $checkSql = "SELECT 1 FROM wishlist WHERE userID = ? AND placeID = ? LIMIT 1";
+    $checkSql = "SELECT 1 FROM Wishlist WHERE userID = ? AND placeID = ? LIMIT 1";
     $checkStmt = $conn->prepare($checkSql);
     $checkStmt->bind_param("ii", $_SESSION['userID'], $placeID);
     $checkStmt->execute();
