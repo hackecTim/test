@@ -96,8 +96,8 @@ if (isset($_SESSION['userID'])) {
 
 <body>
     <?php
-      $current = 'Page Layout';
-      $pill = 'Page Layout';
+      $current = 'Place';
+      $pill = 'Place';
       include __DIR__ . "/../partials/header_sites.php";
     ?>
 

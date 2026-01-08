@@ -19,8 +19,8 @@ session_start();
 
    
     <?php
-      $current = 'Page1';
-      $pill = 'Page1';
+      $current = 'Home';
+      $pill = 'Home';
       include __DIR__ . "/../partials/header_sites.php";
     ?>
 
