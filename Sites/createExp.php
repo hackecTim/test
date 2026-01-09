@@ -50,12 +50,12 @@ if (!isset($_SESSION['userID'])) {
             <label>Type</label>
             <select name="type" required>
                 <option value="">Select type</option>
-                <option value="restaurant">Restaurant</option>
-                <option value="cafe">Café</option>
-                <option value="historic">Historic Sight</option>
-                <option value="park">Park</option>
-                <option value="museum">Museum</option>
-                <option value="activity">Activity</option>
+                <option value="Restaurant">Restaurant</option>
+                <option value="Café">Café</option>
+                <option value="Historic Sight">Historic Sight</option>
+                <option value="Park">Park</option>
+                <option value="Museum">Museum</option>
+                <option value="Activity">Activity</option>
             </select>
         </div>
 
@@ -122,6 +122,7 @@ if (!isset($_SESSION['userID'])) {
 
 </body>
 </html>
+
 
 
 
