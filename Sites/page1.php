@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "../Scripts/Config.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -131,41 +132,41 @@ session_start();
         </div>
 
         <div class="scroll-container">
-          <a href="../pages-layout/page_layout.php?placeID=16" class="card">
-            <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=600" alt="Flea Market" class="card-image">
-            <div class="card-content">
-              <h3>Sunday Flea Market</h3>
-              <p>Every Sunday 8 AM - 12 PM, vintage treasures and crafts</p>
-            </div>
-          </a>
+          <?php
+          $sql = "SELECT placeID, name, about, photos FROM Place WHERE type = 'Activity' ORDER BY RAND() LIMIT 4";
+          $result = $conn->query($sql);
 
-          <a href="../pages-layout/page_layout.php?placeID=17" class="card">
-            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600" alt="Food Tour" class="card-image">
-            <div class="card-content">
-              <h3>Local Food Tour</h3>
-              <p>Taste authentic dishes at hidden local eateries</p>
-            </div>
-          </a>
+          if ($result && $result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+                  $placeID = htmlspecialchars($row['placeID']);
+                  $name = htmlspecialchars($row['name']);
+                  $about = htmlspecialchars($row['about']);
+                  
+                  $photos = $row['photos'];
+                  $photoArray = !empty($photos) ? explode(',', $photos) : [];
+                  $firstPhoto = !empty($photoArray[0]) ? $photoArray[0] : 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600';
 
-          <a href="../pages-layout/page_layout.php?placeID=18" class="card">
-            <img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=600" alt="Bike Tour" class="card-image">
-            <div class="card-content">
-              <h3>Riverside Bike Tour</h3>
-              <p>Cycle along scenic trails and through old town</p>
-            </div>
-          </a>
-
-          <a href="../pages-layout/page_layout.php?placeID=19" class="card">
-            <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600" alt="Wine Tasting" class="card-image">
-            <div class="card-content">
-              <h3>Wine Cellar Visit</h3>
-              <p>Sample regional wines in historic underground cellars</p>
-            </div>
-          </a>
+                  $shortAbout = strlen($about) > 100 ? substr($about, 0, 100) . '...' : $about;
+                  
+                  echo "
+                  <a href=\"../pages-layout/page_layout.php?placeID={$placeID}\" class=\"card\">
+                    <img src=\"{$firstPhoto}\" alt=\"{$name}\" class=\"card-image\">
+                    <div class=\"card-content\">
+                      <h3>{$name}</h3>
+                      <p>{$shortAbout}</p>
+                    </div>
+                  </a>
+                  ";
+              }
+          }
+          ?>
         </div>
       </section>
     </main>
-<?php include __DIR__ . "/../partials/footer.php"; ?>
+<?php
+    $conn->close();
+    include __DIR__ . "/../partials/footer.php";
+?>
 
   </div>
 
