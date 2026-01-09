@@ -1,69 +1,72 @@
-# Discoverly 
+# Discoverly
 Discover hidden gems in your chosen town — cozy spots, lesser-known attractions, and local favorites.
 
 > Live demo: https://discoverly.itnet.si/
 
 ## What is Discoverly?
-**Discoverly** is a PHP-based web app for exploring “hidden gem” places in a town/city.  
-It includes authentication pages so users can log in, save favorite places and leave reviews.  
+**Discoverly** is a PHP-based web app for exploring “hidden gem” places in a town or city.  
+It includes authentication so users can log in, save favorite places, and leave reviews.
 
 ## Key Features
 - **Browse featured places** on the homepage
 - **User authentication**
   - Login page
   - Signup / account creation
-- **Places content + uploads**
-  - Includes a dedicated folder for place uploads/images
+- **Places content & uploads**
+  - Dedicated folder for uploaded place images
 - **Client-side filtering/search**
-  - Includes a `filter-search.js` script in the project root
+  - Uses `filter-search.js`
 
 ## Tech Stack
 - **Backend:** PHP  
-- **Frontend:** HTML + CSS + JavaScript  
-- **Database:** Included in `/database` (schema/scripts live in the repo)
+- **Frontend:** HTML, CSS, JavaScript  
+- **Database:** MySQL / MariaDB (schema included in `/database`)
 
 ## Project Structure
-High-level layout (based on the repository folders):
-- `Sites/` — site pages 
-- `css/` — styling
-- `partials/` — reusable UI fragments (headers, nav, footer, etc.)
-- `pages-layout/` — layout templates
-- `database/` — database schema/scripts/config
-- `uploads_places/` — uploaded place images/files
-- `day-trips/` — content/pages related to day trips
-- `Scripts/` — helper scripts/utilities
-- `index.php` — app entry/home page
-- `filter-search.js` — front-end filtering/search logic
+- `Sites/` — site pages  
+- `css/` — styling  
+- `partials/` — reusable UI components  
+- `pages-layout/` — layout templates  
+- `database/` — database schema and configuration  
+- `uploads_places/` — uploaded place images  
+- `day-trips/` — day trip related pages  
+- `Scripts/` — helper scripts  
+- `index.php` — application entry point  
+- `filter-search.js` — search & filtering logic  
 
 ## Getting Started (Local Setup)
 
 ### Prerequisites
 - PHP (recommended: PHP 8+)
-- A local web server (Apache/Nginx) or a PHP dev server
-- MySQL/MariaDB (or whichever DB your schema targets)
+- Apache/Nginx or PHP built-in server
+- MySQL / MariaDB
 
 ### 1) Clone the repository
 ```bash
 git clone https://github.com/hackecTim/Discoverly.git
 cd Discoverly
+```
+2) Set up the database
+Look inside the database/ folder for a .sql schema file and import it into your database.
 
-### 2) Set up the database
-
-Look inside the database/ folder for a .sql schema or setup scripts. Import the schema.
-
-### 3) Run the app
-Option A: PHP built-in server (simple dev mode)
+3) Run the app
+Option A: PHP built-in server
+```bash
 php -S localhost:8000
+```
+Then open:
+```bash
+http://localhost:8000
+```
 
-
-Then open: http://localhost:8000
-
-Option B: Apache/Nginx
-
-Point your web root to the project folder and load:
+Option B: Apache / Nginx
+Point your web root to the project folder and open:
+```bash
 http://localhost/index.php
+```
 
-### screenshots
+
+## Screenshots
 
 <img width="1919" height="944" alt="3" src="https://github.com/user-attachments/assets/c10a1615-139e-4e8d-b866-59f83ac5e3c3" />
 <img width="1919" height="946" alt="2" src="https://github.com/user-attachments/assets/8ff60731-b33c-4612-88cd-54fe4f56f384" />
@@ -83,4 +86,5 @@ This project was developed by:
 - **Žan Luka Hojnik** — [@Hojnik15](https://github.com/Hojnik15)
 - **Luka Marinko** — [@Looka550](https://github.com/Looka550)
 - **Žan Vincent Božič** — [@KekecD](https://github.com/KekecD)
+
 
