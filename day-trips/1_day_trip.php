@@ -19,7 +19,7 @@ while ($row = $places->fetch_assoc()) {
     ];
 }
 
-$activitySql = "SELECT name, latitude, longitude FROM Activity WHERE activityID = 1";
+/*$activitySql = "SELECT name, latitude, longitude FROM Activity WHERE activityID = 1";
 $activityResult = $conn->query($activitySql);
 $activity = $activityResult->fetch_assoc();
 if ($activity) {
@@ -28,7 +28,7 @@ if ($activity) {
         'lat' => $activity['latitude'],
         'lng' => $activity['longitude']
     ];
-} 
+}*/
 ?>
 
 <!DOCTYPE html>
