@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS Activity (
 
 /*$conn->query("INSERT INTO Users (username, email, password) VALUES ('admin', 'admin@discoverly.com', 'pass123')");
 $userID = $conn->insert_id;
-echo "✅ User created! ID: $userID<br><br>";*/
+*/
 
 $userID = 1;
 
@@ -54,20 +54,16 @@ INSERT INTO Place (userID, type, name, location, about, address, hours, price, c
 
 ($userID, 'Park', 'Central Park', 'City Center', 'Large urban park with walking paths, pond, and weekend outdoor concerts.', 'Park Avenue 1', 'Daily 6:00 AM - 10:00 PM', 'Free', '+386 1 999 0000', 'https://www.centralpark.com', 'Full wheelchair access', 3, 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=600', 46.0545, 14.5110),
 
-($userID, 'Park', 'River Walk Promenade', 'Riverside', 'Scenic riverside path lined with willow trees, perfect for morning strolls.', 'River Path 20', 'Always open', 'Free', '+386 1 111 2222', 'https://www.riverwalk.com', 'Full wheelchair access', 2, 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600', 46.0495, 14.5150)
+($userID, 'Park', 'River Walk Promenade', 'Riverside', 'Scenic riverside path lined with willow trees, perfect for morning strolls.', 'River Path 20', 'Always open', 'Free', '+386 1 111 2222', 'https://www.riverwalk.com', 'Full wheelchair access', 2, 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600', 46.0495, 14.5150),
+
+($userID, 'Activity', 'Sunday Flea Market', 'Old Town', 'Every Sunday 8 AM - 12 PM, vintage treasures and crafts from local vendors', 'Old Town Square', 'Every Sunday 8:00 AM - 12:00 PM', 'Free', '+386 1 555 1234', 'https://www.sundaymarket.com', 'Full wheelchair access', 4, 'https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=600', 46.0517, 14.5105),
+
+($userID, 'Activity', 'Local Food Tour', 'City Center', 'Taste authentic dishes at hidden local eateries with a knowledgeable guide', 'Meeting Point: Main Square', 'Daily 10:00 AM, 2:00 PM, 6:00 PM', '€€€', '+386 1 555 2345', 'https://www.foodtours.com', 'Full access', 3, 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600', 46.0513, 14.5062),
+
+($userID, 'Activity', 'Riverside Bike Tour', 'Riverside', 'Cycle along scenic trails and through old town neighborhoods', 'Bike Shop, River Road 5', 'Daily 9:00 AM, 3:00 PM', '€€', '+386 1 555 3456', 'https://www.biketours.com', 'Suitable for all levels', 2, 'https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=600', 46.0498, 14.5135),
+
+($userID, 'Activity', 'Wine Cellar Visit', 'Old Town', 'Sample regional wines in historic underground cellars with expert sommeliers', 'Wine Street 8', 'Tuesday-Saturday 4:00 PM, 6:00 PM', '€€€', '+386 1 555 4567', 'https://www.winecellar.com', 'Limited access (stairs)', 2, 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600', 46.0509, 14.5048)
 ");
-echo "✅ All 15 places created with coordinates!<br><br>";
-
-/*$conn->query("
-INSERT INTO Activity (userID, name, description, schedule, duration, price, photos, latitude, longitude) VALUES
-($userID, 'Sunday Flea Market', 'Every Sunday 8 AM - 12 PM, vintage treasures and crafts from local vendors', 'Every Sunday 8:00 AM - 12:00 PM', 4, 'Free', 'https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=600', 46.0517, 14.5105),
-
-($userID, 'Local Food Tour', 'Taste authentic dishes at hidden local eateries with a knowledgeable guide', 'Daily 10:00 AM, 2:00 PM, 6:00 PM', 3, '€€€', 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600', 46.0513, 14.5062),
-
-($userID, 'Riverside Bike Tour', 'Cycle along scenic trails and through old town neighborhoods', 'Daily 9:00 AM, 3:00 PM', 2, '€€', 'https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=600', 46.0498, 14.5135),
-
-($userID, 'Wine Cellar Visit', 'Sample regional wines in historic underground cellars with expert sommeliers', 'Tuesday-Saturday 4:00 PM, 6:00 PM', 2, '€€€', 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600', 46.0509, 14.5048)
-");*/
 
 $conn->query("
 INSERT INTO Review (userID, placeID, comment, rating) VALUES
