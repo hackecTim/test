@@ -160,12 +160,12 @@ if (isset($_SESSION['userID'])) {
         <h3>Quick Info</h3>
         <div class="info-item"><span class="info-icon"></span><span><strong>Address:</strong> <?= htmlspecialchars($place['address']) ?></span></div>
         <div class="info-item"><span class="info-icon"></span><span><strong>Hours:</strong> <?= htmlspecialchars($place['hours']) ?></span></div>
-        <div class="info-item"><span class="info-icon"></span><span><strong>Price:</strong> <?= htmlspecialchars($place['price']) ?></span></div>
+        <div class="info-item"><span class="info-icon"></span><span><strong>Price:</strong> <?= $place['price'] == "0" || empty($place['price']) ? 'Free' : htmlspecialchars($place['price']) ?></span></div>
         <div class="info-item"><span class="info-icon"></span><span><strong>Contact:</strong> <?= htmlspecialchars($place['contact']) ?></span></div>
         <div class="info-item"><span class="info-icon"></span><span><strong>Website:</strong> <a href="<?= htmlspecialchars($place['website']) ?>" class="link-accent"><?= htmlspecialchars($place['website']) ?></a></span></div>
         <div class="info-item"><span class="info-icon"></span><span><strong>Accessibility:</strong> <?= htmlspecialchars($place['accessibility']) ?></span></div>
         <div class="info-item"><span class="info-icon"></span><span><strong>Rating:</strong> <?= $avgRating === "0.0" ? 'No ratings yet' : $avgRating . ' average' ?></span></div>
-        <div class="info-item"><span class="info-icon"></span><span><strong>Duration:</strong> Allow <?= htmlspecialchars($place['duration']) ?> hours</span></div>
+        <div class="info-item"><span class="info-icon"></span><span><strong>Duration:</strong> <?= $place['duration'] == "0" || empty($place['duration']) ? 'At your pace' : 'Allow ' . htmlspecialchars($place['duration']) . ' hours'</span></div>
       </div>
     </div>
   </div>
