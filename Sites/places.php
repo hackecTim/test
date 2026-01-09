@@ -98,12 +98,7 @@ session_start();
                 </a>
                 ";
             }
-        } else {
-            echo "<p style='grid-column: 1/-1; text-align: center; padding: 2rem; color: #666;'>
-                    No places found yet. <a href='../Sites/createExp.php' style='color: #1e3a5f; text-decoration: underline;'>Add the first place!</a>
-                  </p>";
         }
-        
         $conn->close();
         ?>
       </div>
