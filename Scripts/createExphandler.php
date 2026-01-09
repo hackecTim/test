@@ -49,7 +49,7 @@ $sql = "INSERT INTO Place (userID, type, name, location, about, address, hours, 
         VALUES (?, ?, ?, NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("isssssssssssdd",
+$stmt->bind_param("isssssssssisdd",
     $user_id,
     $type,
     $name,
@@ -73,5 +73,6 @@ if ($stmt->execute()) {
     die("Database error: " . $stmt->error);
 }
 ?>
+
 
 
