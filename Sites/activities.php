@@ -69,7 +69,7 @@ include "../Scripts/Config.php";
                 }
                 
                 echo "
-                <a href=\"../pages-layout/page_layout.php?placeID={$placeID}\" class=\"activity-card\">
+                <a href=\"../pages-layout/page_layout.php?placeID={$placeID}\" class=\"activity-card filterDiv show\">
                   <img src=\"{$firstPhoto}\" alt=\"{$name}\" class=\"activity-image\">
                   <div class=\"activity-content\">
                     <h3>{$name}</h3>
