@@ -61,7 +61,7 @@ session_start();
         }
       ?>
 
-      <h2 class="home-title">Discover Hidden Gems in Town Name</h2>
+      <h2 class="home-title">Discover Hidden Gems in your town</h2>
       <p class="home-subtitle">
         Explore the best of your town with our guide to lesser-known attractions, cozy spots, and local favorites.
       </p>
